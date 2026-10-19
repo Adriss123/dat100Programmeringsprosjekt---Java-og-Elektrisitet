@@ -2,34 +2,7 @@ package no.hvl.dat100.javel.oppgave1;
 
 
 public class DailyPower {
-
-    public static void main(String[] args) {
-    printPowerPrices(powerprices_day);
-    printPowerUsage(powerusage_day);
-    computePowerUsage(powerusage_day);
-    computeSpotPrice(powerusage_day, powerprices_day);
-    computePowerSupport(powerusage_day, powerprices_day);
-    computeNorgesPrice(powerusage_day);
-    findPeakUsage(powerusage_day);
-
-    }
     
-    public static double[] powerprices_day = {
-
-            0.1, 0.2, 0.3, 0.4, 0.5, 0.6,
-            0.7, 0.8, 1.9, 1.0, 1.1, 1.2,
-            1.3, 1.4, 1.5, 1.6, 1.7, 1.8,
-            1.9, 2.0, 1.5, 1.0, 0.5, 0.1
-    };
-    public static double[] powerusage_day = {
-
-            0.34, 0.29, 0.31, 0.45, 0.41, 0.38,
-            2.12, 1.87, 2.03, 1.01, 0.95, 0.89,
-            1.11, 0.84, 0.93, 1.08, 2.45, 2.78,
-            2.36, 2.19, 0.91, 0.73, 0.66, 0.59
-    };
-
-
     // a) print power prices during a day
     public static void printPowerPrices(double[] prices) {
 
@@ -65,8 +38,7 @@ public class DailyPower {
         for (int i = 0; i < usage.length; i++) {
             price += usage[i] * prices[i];
         }
-        System.out.printf("%.2f NOK hver dag ", price);
-        System.out.println();
+
         return price;
     }
 
@@ -93,8 +65,6 @@ public class DailyPower {
             support += getSupport(usage[i], prices[i]);
             //bruker getSupport fra opg E for denne oppgaven
         }
-        System.out.printf("%.2f NOK i total stømstøtte", support);
-        System.out.println();
         return support;
     }
 
@@ -108,8 +78,6 @@ public class DailyPower {
         for (int i = 0; i <usage.length; i++) {
             price += usage[i] * 0.5;
         }
-        System.out.printf("%.2f NOK i strømpris med 50øre per kWh", price);
-        System.out.println();
 
         return price;
     }
@@ -124,7 +92,6 @@ public class DailyPower {
                 temp_max = usage[i];
             }
         }
-        System.out.println("temp_max = " + temp_max);
         return temp_max;
     }
     // i)
