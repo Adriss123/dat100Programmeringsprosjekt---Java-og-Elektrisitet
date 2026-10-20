@@ -1,29 +1,29 @@
 package no.hvl.dat100.javel.oppgave2;
 
-import no.hvl.dat100.javel.oppgave1.DailyPower;
-
 public class MonthlyPower {
 
     // a) print power usage for a month
     public static void print_PowerUsage(double[][] usage) {
 
         for (int i = 0; i < usage.length; i++) {
-            System.out.print("Dag" + (i+1) + ":");
-            DailyPower.printPowerUsage(usage[i]);
-            System.out.print("kWh ");
+            System.out.print("Day " + (i + 1) + ":");
+            for (int j = 0; j < usage[i].length; j++) {
+                System.out.printf("%.2f kWh ", usage[i][j]);
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     // b) print power prices for a month
     public static void print_PowerPrices(double[][] prices) {
 
         for (int i = 0; i < prices.length; i++) {
-            System.out.printf("Day " + (i + 1) + ":");
-            DailyPower.printPowerPrices(prices[i]);
-            System.out.print("NOK ");
+            System.out.print("Day " + (i + 1) + ":");
+            for (int j = 0; j < prices[i].length; j++) {
+                System.out.printf("%.2f NOK ", prices[i][j]);
+            }
+            System.out.println();
         }
-        System.out.println();
     }
 
     // c) compute total power usage for a month
@@ -36,7 +36,7 @@ public class MonthlyPower {
                 sum += usage[i][j];
             }
         }
-        System.out.println(sum);
+
         return sum;
     }
 
@@ -46,7 +46,7 @@ public class MonthlyPower {
         boolean exceeded = false;
         double usage = 0;
 
-        int i=0;
+        int i = 0;
         while (i < powerusage.length && !exceeded) {
 
             int j = 0;
@@ -59,8 +59,7 @@ public class MonthlyPower {
             }
             i++;
         }
-        System.out.println(usage);
-        System.out.println("Went over = " + exceeded);
+
         return exceeded;
     }
 
@@ -74,8 +73,6 @@ public class MonthlyPower {
                 price += usage[i][j] * prices[i][j];
             }
         }
-        System.out.printf("%.2f nok", price);
-        System.out.println();
 
         return price;
     }
@@ -92,7 +89,6 @@ public class MonthlyPower {
                 }
             }
         }
-        System.out.println("Menge penger i støtte: " + support);
 
         return support;
     }
@@ -107,7 +103,6 @@ public class MonthlyPower {
                 price += time * 0.5;
             }
         }
-        System.out.println(price);
 
         return price;
     }

@@ -1,18 +1,14 @@
 package no.hvl.dat100.javel.oppgave2;
 
-import no.hvl.dat100.javel.oppgave1.DayPowerData;
 
 import static no.hvl.dat100.javel.oppgave2.MonthlyPower.*;
-import static no.hvl.dat100.javel.oppgave2.MonthPowerData.*;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class MonthMain {
+
     public static void main(String[] args) {
 
         // test data
         double[][] power_prices_month = MonthPowerData.powerprices_month;
-
         double[][] power_usage_month = MonthPowerData.powerusage_month;
 
         System.out.println("==============");
@@ -20,16 +16,28 @@ public class MonthMain {
         System.out.println("==============");
         System.out.println();
 
-        //Fjern "//" for å testkjøre valgt oppgave, grunnen til at jeg ikke gjorde dette i opg1 var fordi svarene var liten nok til å ikke ta mye plass i terminalen...
+        // a) skriv ut forbruk (kommenter ut hvis det blir for mye i terminalen)
+        print_PowerUsage(power_usage_month);
+        System.out.println();
 
+        // b) skriv ut priser (kommenter ut hvis det blir for mye i terminalen)
+        print_PowerPrices(power_prices_month);
+        System.out.println();
 
-        //print_PowerUsage(powerusage_month);
-        //print_PowerPrices(power_prices_month);
-        //computePowerUsage(power_usage_month);
-        //exceedThreshold(power_usage_month, 1000);
-        //nevner at månedligforbruk er minbdre enn 1000 og 5000, så man får ikke "true"
-        //computeSpotPrice(power_usage_month, power_prices_month);
-        //computePowerSupport(power_usage_month, power_prices_month);
-        //computeNorgesPrice(power_usage_month);
+        // c)
+        System.out.printf("Totalt forbruk: %.2f kWh%n", computePowerUsage(power_usage_month));
+
+        // d) månedsforbruket er under 1000 og 5000, så begge gir false
+        System.out.println("Over 1000 kWh: " + exceedThreshold(power_usage_month, 1000));
+        System.out.println("Over 5000 kWh: " + exceedThreshold(power_usage_month, 5000));
+
+        // e)
+        System.out.printf("Spotpris: %.2f NOK%n", computeSpotPrice(power_usage_month, power_prices_month));
+
+        // f)
+        System.out.printf("Strømstøtte: %.2f NOK%n", computePowerSupport(power_usage_month, power_prices_month));
+
+        // g)
+        System.out.printf("Norgespris: %.2f NOK%n", computeNorgesPrice(power_usage_month));
     }
 }
