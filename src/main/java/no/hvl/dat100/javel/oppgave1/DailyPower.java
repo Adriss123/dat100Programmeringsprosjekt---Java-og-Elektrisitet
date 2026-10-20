@@ -103,7 +103,8 @@ public class DailyPower {
             }
         }
         System.out.println("temp_max = " + temp_max);
-        return temp_max;
+
+        return  temp_max;
     }
     // i)
     public static double findAvgPower(double[] usage) {
@@ -112,6 +113,7 @@ public class DailyPower {
 
         average = computePowerUsage(usage)/usage.length;
         //bruker computePowerUsage fra opg C på denne oppgaven
+        System.out.printf("%.2f Kwh average powerusage \n", average);
 
         return average;
     }

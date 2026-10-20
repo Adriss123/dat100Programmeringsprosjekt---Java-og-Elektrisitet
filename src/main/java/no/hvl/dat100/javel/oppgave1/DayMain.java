@@ -26,6 +26,6 @@ public class DayMain {
         computePowerSupport(powerusage_day, powerprices_day);
         computeNorgesPrice(powerusage_day);
         findPeakUsage(powerusage_day);
-
+        findAvgPower(powerusage_day);
     }
 }
