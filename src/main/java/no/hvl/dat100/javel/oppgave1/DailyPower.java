@@ -1,25 +1,27 @@
 package no.hvl.dat100.javel.oppgave1;
 
-
 public class DailyPower {
 
+    // a) priser for en dag (utskrift skjer i DayMain)
+    public static double[] printPowerPrices(double[] prices) {
 
-    // a) print power prices during a day
-    public static void printPowerPrices(double[] prices) {
-
-        for (int i =0; i < prices.length; i++) {
+        for (int i = 0; i < prices.length; i++) {
             System.out.printf("%.2f NOK ", prices[i]);
         }
         System.out.println();
+
+        return prices;
     }
 
-    // b) print power usage during a day
-    public static void printPowerUsage(double[] usage) {
+    // b) forbruk for en dag (utskrift skjer i DayMain)
+    public static double[] printPowerUsage(double[] usage) {
 
-        for (int i =0; i < usage.length; i++) {
+        for (int i = 0; i < usage.length; i++) {
             System.out.printf("%.2f kWh ", usage[i]);
         }
         System.out.println();
+
+        return usage;
     }
 
     // c) compute power usage for a single day
@@ -27,11 +29,10 @@ public class DailyPower {
 
         double sum = 0;
 
-        for (int i = 0;  i < usage.length; i++) {
+        for (int i = 0; i < usage.length; i++) {
             sum += usage[i];
         }
-        System.out.printf("%.2f kWh per dag", sum);
-        System.out.println();
+
         return sum;
     }
 
@@ -43,8 +44,7 @@ public class DailyPower {
         for (int i = 0; i < usage.length; i++) {
             price += usage[i] * prices[i];
         }
-        System.out.printf("%.2f NOK hver dag ", price);
-        System.out.println();
+
         return price;
     }
 
@@ -67,12 +67,10 @@ public class DailyPower {
 
         double support = 0;
 
-        for  (int i = 0; i < usage.length; i++) {
+        for (int i = 0; i < usage.length; i++) {
             support += getSupport(usage[i], prices[i]);
-            //bruker getSupport fra opg E for denne oppgaven
         }
-        System.out.printf("%.2f NOK i total stømstøtte", support);
-        System.out.println();
+
         return support;
     }
 
@@ -83,11 +81,9 @@ public class DailyPower {
 
         double price = 0;
 
-        for (int i = 0; i <usage.length; i++) {
-            price += usage[i] * 0.5;
+        for (int i = 0; i < usage.length; i++) {
+            price += usage[i] * NORGESPRIS_KWH;
         }
-        System.out.printf("%.2f NOK i strømpris med 50øre per kWh", price);
-        System.out.println();
 
         return price;
     }
@@ -102,19 +98,13 @@ public class DailyPower {
                 temp_max = usage[i];
             }
         }
-        System.out.println("temp_max = " + temp_max);
 
-        return  temp_max;
+        return temp_max;
     }
-    // i)
+
+    // i) compute average usage per hour
     public static double findAvgPower(double[] usage) {
 
-        double average = 0;
-
-        average = computePowerUsage(usage)/usage.length;
-        //bruker computePowerUsage fra opg C på denne oppgaven
-        System.out.printf("%.2f Kwh average powerusage \n", average);
-
-        return average;
+        return computePowerUsage(usage) / usage.length;
     }
 }
