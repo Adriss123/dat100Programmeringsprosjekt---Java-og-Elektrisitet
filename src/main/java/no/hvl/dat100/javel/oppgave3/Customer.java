@@ -40,9 +40,8 @@ public class Customer {
         this.agreement = agreement;
     }
 
-
     public String toString() {
-    return "customer number: " + customer_id + "\n" + " name: " + name + "\n" + " email: " + email + "\n" + " agreement: " + agreement;
+        return "customer number: " + customer_id + "\n" + " name: " + name + "\n" + " email: " + email + "\n" + " agreement: " + agreement;
     }
 
 }
